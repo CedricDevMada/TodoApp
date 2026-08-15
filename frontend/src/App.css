@@ -1,0 +1,554 @@
+/* =========================================
+   TODO APP - MODERN UI
+   ========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  min-height: 100vh;
+  color: #172033;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(139, 92, 246, 0.12),
+      transparent 35%
+    ),
+    #f5f7fb;
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+#root {
+  min-height: 100vh;
+}
+
+#root > div {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 70px 0;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+h1 {
+  position: relative;
+
+  margin-bottom: 35px;
+
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -1.8px;
+
+  color: #111827;
+
+  text-align: center;
+}
+
+h1::after {
+  content: "";
+
+  display: block;
+
+  width: 55px;
+  height: 5px;
+
+  margin: 14px auto 0;
+
+  border-radius: 999px;
+
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+}
+
+/* =========================================
+   FORM
+   ========================================= */
+
+form {
+  display: flex;
+  gap: 12px;
+
+  padding: 10px;
+
+  margin-bottom: 30px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(226, 232, 240, 0.9);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.07),
+    0 2px 8px rgba(15, 23, 42, 0.04);
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+}
+
+form:focus-within {
+  border-color: rgba(99, 102, 241, 0.35);
+
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.08),
+    0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+/* =========================================
+   INPUT
+   ========================================= */
+
+form input[type="text"] {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 15px 17px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+
+  color: #172033;
+}
+
+form input[type="text"]::placeholder {
+  color: #9ca3af;
+}
+
+/* =========================================
+   ADD BUTTON
+   ========================================= */
+
+form button {
+  border: none;
+  outline: none;
+
+  padding: 0 24px;
+
+  border-radius: 13px;
+
+  background: linear-gradient(135deg, #6366f1, #7c3aed);
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 18px rgba(99, 102, 241, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+form button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+
+  filter: brightness(1.05);
+}
+
+form button:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   TODO LIST
+   ========================================= */
+
+ul {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+
+  list-style: none;
+}
+
+/* =========================================
+   TODO ITEM
+   ========================================= */
+
+li {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 70px;
+
+  padding: 15px 16px 15px 20px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid #e8ebf2;
+
+  border-radius: 17px;
+
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.045);
+
+  font-size: 15px;
+  font-weight: 500;
+
+  color: #273247;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+
+  animation: todoAppear 0.35s ease both;
+}
+
+li:hover {
+  transform: translateY(-2px);
+
+  border-color: #dfe3f0;
+
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================
+   TODO TEXT
+   ========================================= */
+
+li {
+  line-height: 1.5;
+}
+
+/* =========================================
+   CHECKBOX
+   ========================================= */
+
+li input[type="checkbox"] {
+  order: 2;
+
+  appearance: none;
+
+  flex-shrink: 0;
+
+  width: 22px;
+  height: 22px;
+
+  margin-left: auto;
+
+  border: 2px solid #cbd5e1;
+
+  border-radius: 7px;
+
+  background: white;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  position: relative;
+}
+
+li input[type="checkbox"]:hover {
+  border-color: #6366f1;
+
+  transform: scale(1.05);
+}
+
+li input[type="checkbox"]:checked {
+  border-color: #6366f1;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+}
+
+li input[type="checkbox"]:checked::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 10px;
+
+  left: 7px;
+  top: 3px;
+
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+
+  transform: rotate(45deg);
+
+  animation: checkAnimation 0.2s ease;
+}
+
+/* =========================================
+   DELETE BUTTON
+   ========================================= */
+
+li button {
+  order: 3;
+
+  flex-shrink: 0;
+
+  border: none;
+  outline: none;
+
+  padding: 9px 13px;
+
+  border-radius: 10px;
+
+  background: #fff1f2;
+
+  color: #e11d48;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+li button:hover {
+  background: #ffe4e6;
+
+  color: #be123c;
+
+  transform: translateY(-1px);
+}
+
+li button:active {
+  transform: scale(0.96);
+}
+
+/* =========================================
+   COMPLETED TODO
+   ========================================= */
+
+/*
+   React applique déjà checked au checkbox.
+   On utilise :has() pour styliser le <li>
+   lorsqu'il contient une checkbox cochée.
+*/
+
+li:has(input[type="checkbox"]:checked) {
+  background: #fafbff;
+
+  border-color: #e5e7eb;
+
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.025);
+}
+
+li:has(input[type="checkbox"]:checked)::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+
+  width: 4px;
+
+  border-radius: 0 5px 5px 0;
+
+  background: #6366f1;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes todoAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes checkAnimation {
+  from {
+    opacity: 0;
+    transform: rotate(45deg) scale(0.5);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+   ========================================= */
+
+@media (max-width: 700px) {
+  #root > div {
+    width: min(100% - 24px, 600px);
+
+    padding: 45px 0;
+  }
+
+  h1 {
+    margin-bottom: 28px;
+
+    font-size: 2.3rem;
+  }
+
+  form {
+    padding: 8px;
+  }
+
+  form button {
+    padding: 0 20px;
+  }
+
+  li {
+    padding: 14px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+   ========================================= */
+
+@media (max-width: 500px) {
+  #root > div {
+    width: calc(100% - 20px);
+
+    padding: 30px 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 25px;
+  }
+
+  form {
+    gap: 7px;
+
+    padding: 7px;
+
+    border-radius: 15px;
+  }
+
+  form input[type="text"] {
+    padding: 13px 11px;
+
+    font-size: 14px;
+  }
+
+  form button {
+    padding: 0 16px;
+
+    border-radius: 11px;
+
+    font-size: 13px;
+  }
+
+  ul {
+    gap: 10px;
+  }
+
+  li {
+    min-height: 62px;
+
+    gap: 10px;
+
+    padding: 12px;
+
+    border-radius: 14px;
+
+    font-size: 14px;
+  }
+
+  li input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+
+  li button {
+    padding: 8px 10px;
+
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   VERY SMALL SCREENS
+   ========================================= */
+
+@media (max-width: 360px) {
+  #root > div {
+    width: calc(100% - 16px);
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form input[type="text"] {
+    width: 100%;
+
+    padding: 13px;
+  }
+
+  form button {
+    min-height: 44px;
+
+    width: 100%;
+  }
+
+  li {
+    flex-wrap: wrap;
+  }
+
+  li input[type="checkbox"] {
+    margin-left: auto;
+  }
+}
